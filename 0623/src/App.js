@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+// 필요한 파일들을 가지고 오는 부분
+import { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  const [value, setValue] = useState("");
+
+  const onChangeHandler = (event) => {
+    const inputValue = event.target.value;
+    setValue(inputValue);
+    console.log(inputValue);
+  }
+
+  return(
+    <div>
+      <input type="text" onChange={onChangeHandler} value={value}/>
     </div>
-  );
+  )
 }
+
+
 
 export default App;
