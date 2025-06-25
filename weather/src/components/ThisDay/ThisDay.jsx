@@ -1,21 +1,28 @@
-import React from 'react'
-// import imageSrc from '../../../public/images/weatherIcons/rain.svg'
+import React, { useState } from 'react'
+import { Bottom, ThisDayWrapper, Top } from './styles'
+import CurrentTime from './CurrentTime';
 
 const ThisDay = () => {
-  let imageSrc = './images/weatherIcons/rain.svg'
-  return (
-    <>
-      <div>
-        <h2>100°</h2>
-        <h2>Now</h2>
-      </div>
-      <img src={imageSrc} alt="" />
+  let imageSrc = './images/weatherIcons/';
+  const [imgsrc, setImgsrc] = useState(imageSrc + "rain.svg");
+  const [temperature, setTemperature] = useState(21);
 
-      <div>16:04</div>
-      <div>
-        Seoul - KR
-      </div>
-    </>
+  return (
+    <ThisDayWrapper>
+      <Top>
+        <div>
+          <h2>{temperature}°</h2>
+          <h3>Now</h3>
+        </div>
+        <img src={imgsrc} alt="" />
+      </Top>
+      <Bottom>
+        <CurrentTime />
+        <div>
+          Seoul - KR
+        </div>
+      </Bottom>
+    </ThisDayWrapper>
   )
 }
 
