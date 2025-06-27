@@ -1,12 +1,21 @@
-import React from 'react'
+import { useTime } from '../../utils/useTime';
 
 const CurrentTime = () => {
+
+  //useTime 훅을 사용해서 현재 시간을 1초마다 갱신
+  const currentTime = useTime(1000)  ;
+
+  //시간을 한국어 형식으로 포맷팅
   const time = new Intl.DateTimeFormat("Ko-KR",
     {
       hour: "numeric",
       minute: "numeric",
     }
-  ).format();
+  ).format(
+    currentTime
+  );
+  
+  //화면에 시간 표시
   return (
     <div>
       {time}

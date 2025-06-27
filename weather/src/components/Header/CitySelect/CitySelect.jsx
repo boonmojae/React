@@ -2,15 +2,29 @@ import React from 'react'
 import CreatableSelect from 'react-select/creatable';
 import { cityOptions } from '../data';
 import { SelectWrapper } from '../styles';
+import { useNavigate } from 'react-router-dom'; //페이지 이동 훅
 
-const CitySelect = () => {
+const CitySelect = () => {  
+  
+  const navigate = useNavigate();//페이지 이동을 위한 훅
+  
+  // onChange에서 매개변수를 받도록 수정
+  const handleChange = (newValue, actionMeta) => {
+    if (newValue) {
+      console.log('선택된 값:', newValue); // 디버깅용
+      navigate(`/${newValue.value}`);
+    }
+  }
+
   return (
     <SelectWrapper>
-    <CreatableSelect isClearable options={cityOptions}
-      defaultInputValue={null}
-      className='react-select-container'
-      classNamePrefix='react-select'
-    />
+      <CreatableSelect 
+        options={cityOptions}
+        defaultInputValue={null}
+        onChange={handleChange}
+        className='react-select-container'
+        classNamePrefix='react-select'
+      />
     </SelectWrapper>
   )
 }
@@ -27,8 +41,8 @@ export default CitySelect
 // const CitySelect = () => {
 //   return (
 //     <SelectWrapper>
-//     <CreatableSelect 
-//       isClearable 
+//     <CreatableSelect
+//       isClearable
 //       options={cityOptions}
 //       defaultInputValue={null}
 //       className='react-select-container'
