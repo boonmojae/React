@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ThisDayWrapper, Top, Bottom} from './styles'
 import CurrentTime from './CurrentTime'
 import useWeather from '../../utils/useWeather';
+import { useParams } from 'react-router-dom';
 
 
 const ThisDay = () => {
-  const {data, isLoading} = useWeather("Seoul");
+
+  const { id } = useParams();
+  console.log(id);
+
+  const {data, isLoading} = useWeather(id ? `id` : "Seoul");
   const temperature = Math.round(data?.main.temp||0);
   const cityName = data?.name;
   

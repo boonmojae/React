@@ -12,7 +12,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} />           {/* 홈페이지 */}
+          <Route path='/:id' element={<Home />} />        {/* 도시별 페이지 */}
+          <Route path='*' element={<Home />} />           {/* 404 - 맨 마지막에 */}
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

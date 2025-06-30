@@ -20,7 +20,8 @@ const CitySelect = () => {
     <SelectWrapper>
       <CreatableSelect 
         options={cityOptions}
-        defaultInputValue={null}
+        // defaultInputValue={null}
+        defaultInputValue=""
         onChange={handleChange}
         className='react-select-container'
         classNamePrefix='react-select'
